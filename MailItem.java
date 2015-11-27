@@ -16,12 +16,12 @@ public class MailItem
     /**
      * Constructor for objects of class MailItem
      */
-    public MailItem(String origen, String destino, String mensaje)
+    public MailItem(String from, String to, String message)
     {
         // initialise instance variables
-       from = origen;
-       to = destino;
-       message = mensaje;
+       this.from = from;
+       this.to = to;
+       this.message = message;
     }
     /**
      * Metodo que devuelve de quien es el mensage

@@ -16,11 +16,11 @@ public class MailClient
     /**
      * Constructor for objects of class mailClient
      */
-    public MailClient(String usuario, MailServer servidor)
+    public MailClient(String user, MailServer server)
     {
         // initialise instance variables
-       server = servidor;
-       user = usuario;
+       this.server = server;
+       this.user = user;
     }
     /**
      * metodo que recupera del servidorel siguiente correo que 
