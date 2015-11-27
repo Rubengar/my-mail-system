@@ -13,15 +13,18 @@ public class MailItem
     private String to;
     //mensage
     private String message;
+    //asunto
+    private String subject;
     /**
      * Constructor for objects of class MailItem
      */
-    public MailItem(String from, String to, String message)
+    public MailItem(String from, String to, String message,String subject)
     {
         // initialise instance variables
        this.from = from;
        this.to = to;
        this.message = message;
+       this.subject = subject;
     }
     /**
      * Metodo que devuelve de quien es el mensage
@@ -45,12 +48,20 @@ public class MailItem
         return message;
     }
     /**
+     * Metodo que devuelve el asunto del mensage
+     */
+    public String getSubject()
+    {
+        return subject;
+    }
+    /**
      * Metodo que muestra por pantalla los datos del email
      */
     public void print()
     {
         System.out.println("Mensage de: " + from);
         System.out.println("Para: " + to);
+        System.out.println("Asunto: " + subject);
         System.out.println( message );
     
     }
