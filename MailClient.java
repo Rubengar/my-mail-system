@@ -12,6 +12,10 @@ public class MailClient
     //usuario
     private String user;
     
+    private int emails;
+    
+    
+    
 
     /**
      * Constructor for objects of class mailClient
@@ -21,6 +25,7 @@ public class MailClient
         // initialise instance variables
        this.server = server;
        this.user = user;
+       emails = 0;
     }
     /**
      * metodo que recupera del servidorel siguiente correo que 
@@ -56,5 +61,9 @@ public class MailClient
     {
         MailItem item = new MailItem(user, to, message, subject);
         server.post(item);
+    }
+    public void numberOfEmails()
+    {
+        System.out.println("Tiene. "+ server.howManyMailItems(user) +" mensajes");
     }
 }

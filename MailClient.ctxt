@@ -11,4 +11,6 @@ comment2.text=\r\n\ Print\ the\ next\ mail\ item\ (if\ any)\ for\ this\ user\ to
 comment3.params=to\ message\ subject
 comment3.target=void\ sendMailItem(java.lang.String,\ java.lang.String,\ java.lang.String)
 comment3.text=\r\n\ Send\ the\ given\ message\ to\ the\ given\ recipient\ via\r\n\ the\ attached\ mail\ server.\r\n\ @param\ to\ The\ intended\ recipient.\r\n\ @param\ message\ The\ text\ of\ the\ message\ to\ be\ sent.\r\n
-numComments=4
+comment4.params=
+comment4.target=void\ numberOfEmails()
+numComments=5
