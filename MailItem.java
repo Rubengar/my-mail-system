@@ -15,6 +15,7 @@ public class MailItem
     private String message;
     //asunto
     private String subject;
+    
     /**
      * Constructor for objects of class MailItem
      */
@@ -23,8 +24,9 @@ public class MailItem
         // initialise instance variables
        this.from = from;
        this.to = to;
-       this.message = message;
        this.subject = subject;
+       this.message = message;
+        
     }
     /**
      * Metodo que devuelve de quien es el mensage
@@ -59,10 +61,10 @@ public class MailItem
      */
     public void print()
     {
-        System.out.println("Mensage de: " + from);
-        System.out.println("Para: " + to);
-        System.out.println("Asunto: " + subject);
-        System.out.println( message );
-    
+            System.out.println("Mensage de: " + from);
+            System.out.println("Para: " + to);
+            System.out.println("Asunto: " + subject);
+            System.out.println( message );
     }
+  
 }

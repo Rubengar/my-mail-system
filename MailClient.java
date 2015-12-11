@@ -14,6 +14,8 @@ public class MailClient
     
     private int emails;
     
+    private MailItem lastMail;
+    
     
     
 
@@ -33,7 +35,29 @@ public class MailClient
      */
     public MailItem getNextMailItem()
     {
-        return server.getNextMailItem(user);
+        MailItem email = server.getNextMailItem(user);
+        
+        if (email.getMessage().contains("trabajo"))
+        {
+        
+        }
+        else 
+        {
+           if (email.getMessage().contains("promocion")|| email.getMessage().contains("regalo"))
+           {
+            email = null;
+        
+            }
+        }
+        
+        
+        if (email != null) 
+        {
+            lastMail = email;
+        }
+   
+        return email;
+        
     }
      //A partir de aqui , ya no fui capaz de hacerlo y lo copie del otro
     /**
@@ -46,10 +70,24 @@ public class MailClient
         if(item == null) {
             System.out.println("No new mail.");
         }
-        else {
-            item.print();
+        else if(item.getMessage().contains("trabajo"))
+        {
+           item.print();
+        }
+        else
+        {
+            if(item.getMessage().contains("promocion")|| item.getMessage().contains("regalo"))
+            {
+                System.out.println("Ha recibido spam");
+            }
+       
+            else
+            {
+                item.print();
+            }
         }
     }
+    
 
     /**
      * Send the given message to the given recipient via
@@ -62,8 +100,37 @@ public class MailClient
         MailItem item = new MailItem(user, to, message, subject);
         server.post(item);
     }
-    public void numberOfEmails()
+    public void howManyMailItemsIHave()
     {
-        System.out.println("Tiene. "+ server.howManyMailItems(user) +" mensajes");
+        System.out.println("Emails pendientes en el servidor: " + 
+                           server.howManyMailItems(user));
+    }
+    
+    /**
+     * Recibe un correo y responde automaticamente indicando
+     * que estamos fuera de la oficina
+     */
+    public void getNextMailItemAndSendAutomaticRespond()
+    {   
+        MailItem email = getNextMailItem();
+        if (email != null)
+        {
+            sendMailItem(email.getFrom(),
+                         "No estoy en la oficina. " + email.getMessage(),
+                         "RE: " + email.getSubject());
+        }
+    }
+    /**
+     * Muestra por pantalla los datos del ultimo email recibido.
+     * En caso de no haber recibido aun ningun email, informa de ello.
+     */
+    public void muestraUltimoEmail() 
+    {
+        if(lastMail != null) {
+            lastMail.print();
+        }
+        else {
+        System.out.println("No hay ningún mensaje.");
+        }
     }
 }
